@@ -9,7 +9,7 @@
 
 # 코드
 
-```
+```javascript
 const shipWithinDays = function (weights, days) {
   let left = Math.max(...weights);
   let right = weights.reduce((acc, cur) => acc + cur, 0);
@@ -40,5 +40,5 @@ const shipWithinDays = function (weights, days) {
 # 결과
 
 Accepted
-Runtime : 89.89%  
-Memory: 45.6 MB
+Runtime : 25.34%
+Memory: 82.40%
