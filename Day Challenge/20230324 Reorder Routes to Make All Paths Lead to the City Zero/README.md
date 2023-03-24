@@ -5,29 +5,29 @@
 # 코드
 
 ```javascript
-const minReorder = (n, connections) => {
-  const graph = {};
-  for (let i = 0; i < n; i++) {
-    graph[i] = [];
-  }
-  for (let i = 0; i < connections.length; i++) {
-    graph[connections[i][1]] = [...graph[connections[i][1]], connections[i][0]];
+function minReorder(n, connections) {
+  const adjList = new Array(n).fill(null).map(() => []);
+  for (let [a, b] of connections) {
+    adjList[a].push([b, 1]);
+    adjList[b].push([a, 0]);
   }
 
-  const visited = Array(n).fill(false);
-  let count = 0;
-  function dfs(node) {
-    visited[node] = true;
-    for (let neighbor of graph[node]) {
-      if (!visited[neighbor]) {
-        count++;
+  const visited = new Set();
+  let cnt = 0;
+
+  const dfs = (node) => {
+    visited.add(node);
+    for (let [neighbor, direction] of adjList[node]) {
+      if (!visited.has(neighbor)) {
+        cnt += direction;
         dfs(neighbor);
       }
     }
-  }
+  };
+
   dfs(0);
-  return count;
-};
+  return cnt;
+}
 ```
 
 # 풀이
@@ -64,3 +64,7 @@ connections 배열을 이용해 인접 리스트(Adjacency List)를 생성합니
 Accepted
 Runtime : 21.59%
 Memory: 54.68%
+
+```
+
+```
