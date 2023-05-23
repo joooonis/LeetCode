@@ -33,5 +33,5 @@ class Solution(object):
 # 결과
 
 Accepted
-Runtime : 82.73%
-Memory: 82.45%
+Runtime : 70.83%
+Memory: 66.67%
