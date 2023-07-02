@@ -7,23 +7,23 @@ var maximumRequests = function (n, requests) {
   indegree = Array(n).fill(0);
   ans = 0;
 
-  const dfs = (i, count = 0) => {
-    if (i === requests.length) {
+  const backTrack = (curr, count = 0) => {
+    if (curr === requests.length) {
       if (indegree.every((x) => x === 0)) {
         ans = Math.max(ans, count);
         return;
       } else return;
     }
-    let [x, y] = requests[i];
+    let [x, y] = requests[curr];
     indegree[x] += 1;
     indegree[y] -= 1;
-    dfs(i + 1, count + 1);
+    backTrack(curr + 1, count + 1);
     indegree[x] -= 1;
     indegree[y] += 1;
-    dfs(i + 1, count);
+    backTrack(curr + 1, count);
   };
 
-  dfs(0, 0);
+  backTrack(0, 0);
 
   return ans;
 };
