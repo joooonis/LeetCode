@@ -13,8 +13,8 @@ class Solution:
                 if s[:i] * (n//i) == s:
                     return True
         return False
-
+```
 
 # 풀이
+
 가능한 범위에서 루프 돌면서 조건 확인해주면 됩니다.
-```
